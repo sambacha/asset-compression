@@ -1,5 +1,4 @@
 const { resolve } = require('path')
-const BrotliPlugin = require('brotli-webpack-plugin')
 
 module.exports = function (moduleOptions) {
   this.extendBuild((config, { isDev }) => {
@@ -12,8 +11,8 @@ module.exports = function (moduleOptions) {
     options.threshold = options.threshold || 0
     options.minRatio = options.minRatio || 0.8
 
-    config.plugins.push(new BrotliPlugin(options))
+    config.plugins.push(new NextjsBrotli(options))
   })
 }
 
-module.exports.meta = require('./../package.json')
+module.exports.meta = require('./package.json')
